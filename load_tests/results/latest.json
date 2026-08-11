@@ -1,0 +1,45 @@
+{
+  "benchmark_kind": "LOCAL/MOCK unless the proxy was started with a real provider",
+  "base_url": "http://127.0.0.1:8000",
+  "requests_per_mode": 2000,
+  "cache_enabled": {
+    "total_requests": 2000,
+    "hits": 1582,
+    "misses": 418,
+    "skips": 0,
+    "bypasses": 0,
+    "hit_rate": 0.791,
+    "miss_rate": 0.209,
+    "p50_latency_seconds": 0.00337704096455127,
+    "p95_latency_seconds": 0.04653941700235009,
+    "p99_latency_seconds": 0.06709758302895352,
+    "hit_latency_p50_seconds": 0.0027689170092344284,
+    "miss_latency_p50_seconds": 0.029326750023756176,
+    "provider_calls_avoided": 1582,
+    "estimated_cost_saved_usd": 0.0078789
+  },
+  "cache_disabled": {
+    "total_requests": 2000,
+    "hits": 0,
+    "misses": 0,
+    "skips": 0,
+    "bypasses": 2000,
+    "hit_rate": 0.0,
+    "miss_rate": 0.0,
+    "p50_latency_seconds": 0.013614083989523351,
+    "p95_latency_seconds": 0.015458042034879327,
+    "p99_latency_seconds": 0.02066029200796038,
+    "hit_latency_p50_seconds": null,
+    "miss_latency_p50_seconds": 0.013614083989523351,
+    "provider_calls_avoided": 0,
+    "estimated_cost_saved_usd": 0.0
+  },
+  "locust_cache_enabled": null,
+  "locust_cache_disabled": null,
+  "comparison": {
+    "hit_rate": 0.791,
+    "provider_calls_avoided": 1582,
+    "p95_latency_ratio": 3.010692874125918,
+    "estimated_cost_saved_usd_from_proxy_counter": 0.007878900000000093
+  }
+}
