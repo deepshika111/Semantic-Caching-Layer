@@ -20,7 +20,7 @@ Default threshold is 0.95   conservative on purpose. See **Real-provider verific
 
 ## Architecture
 
-```
+```mermaid
 flowchart TD
     app[Application] --> proxy[FastAPI proxy]
     proxy --> policy[Cache policy]
@@ -187,16 +187,6 @@ Traffic mix is configurable in the Locust file. Mock numbers shouldn't get prese
 ## Tradeoffs
 
 Higher threshold = safer, lower hit rate, more provider spend. Lower threshold = more hits, more risk a "close" prompt wasn't really asking the same thing. Short TTLs on temporal prompts trade hit rate for freshness. Caching creative output means replaying a past invention   sometimes wanted, sometimes not; default is "cache it, but only above 0.98." Storing raw prompts helps debugging and hurts privacy   `PROMPT_RETENTION_ENABLED=false` keeps a hash instead.
-
-## Limitations
-
-- Mock embeddings are bag-of-tokens, not real `text-embedding-3-small`. Three prompt pairs checked against the real thing   not a systematic evaluation.
-- Anthropic and Ollama adapters exist but aren't as tested as the OpenAI path.
-- No tenant isolation, no encryption at rest, no per-user ACL.
-- Redis TTL expiry isn't fully reflected in the eviction metric.
-- Chat completions only   tool calls are refused, not cached.
-- Threshold "recommendation" is an offline sweep, not online learning.
-- Request-type classification is heuristic and can be inconsistent   "what is X" and "tell me about X" classified differently during testing.
 
 ## Future improvements
 
